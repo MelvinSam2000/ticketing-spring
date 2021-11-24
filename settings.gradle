@@ -1,0 +1,9 @@
+rootProject.name = "ticketing"
+
+
+include("discovery")
+
+include("auth")
+include("tickets")
+
+include("gateway")
