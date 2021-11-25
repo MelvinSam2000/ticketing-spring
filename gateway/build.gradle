@@ -31,6 +31,10 @@ dependencyManagement {
 	}
 }
 
+jar {
+    enabled = false
+}
+
 test {
 	useJUnitPlatform()
 }
