@@ -1,4 +1,4 @@
-SERVICE_NAME=gateway
+SERVICE_NAME=tickets
 
 init:
 	spring init \

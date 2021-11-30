@@ -5,12 +5,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
 
-@Document
+@Document("ticket")
 public @Data class TicketDto {
     
     @Id
     private String id;
     private String title;
-    private float price;
+    private double price;
     private String userId;
 }
