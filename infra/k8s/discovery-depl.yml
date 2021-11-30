@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discovery-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discovery
+  template:
+    metadata:
+      labels:
+        app: discovery
+    spec:
+      containers:
+        - name: discovery
+          image: gcr.io/ticketing-333617/ticketing-discovery
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: discovery-srv
+spec:
+  selector:
+    app: discovery
+  ports:
+    - name: discovery
+      protocol: TCP
+      port: 8010
+      targetPort: 8010
+  type: LoadBalancer
