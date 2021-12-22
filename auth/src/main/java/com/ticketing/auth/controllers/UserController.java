@@ -4,8 +4,6 @@ import com.ticketing.auth.models.AuthTokenDto;
 import com.ticketing.auth.models.ReqUserDto;
 import com.ticketing.auth.services.UserService;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,18 +11,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/users")
+@Slf4j
 public class UserController {
-
-    Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     UserService userService;
     
     @GetMapping("/status")
     public String getStatus() {
-        logger.debug("status: working!");
+        log.debug("status: working!");
         return "Working!";
     }
 

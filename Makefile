@@ -1,9 +1,9 @@
-SERVICE_NAME=tickets
+SERVICE_NAME=auth
 
 init:
 	spring init \
 		--build gradle \
-		--dependencies=cloud-gateway,webflux,cloud-eureka \
+		--dependencies=cloud-stream,rabbitmq \
 		--description "ticketing service" \
 		-g com.ticketing \
 		-j 11 \

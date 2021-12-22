@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: events-rabbitmq-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: events-rabbitmq
+  template:
+    metadata:
+      labels:
+        app: events-rabbitmq
+    spec:
+      containers:
+        - name: events-rabbitmq
+          image: rabbitmq:3.9.11-management-alpine
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: events-rabbitmq-srv
+spec:
+  selector:
+    app: events-rabbitmq
+  ports:
+   - name: http
+     protocol: TCP
+     port: 15672
+     targetPort: 15672
+   - name: amqp
+     protocol: TCP
+     port: 5672
+     targetPort: 5672
+  type: LoadBalancer
+  
