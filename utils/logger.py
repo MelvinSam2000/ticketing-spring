@@ -16,15 +16,16 @@ pods = subprocess.run(cmd,
 
 pods = re.sub(" |\n", "@", pods)
 pods = re.sub("@+", "@", pods).split("@")
-#pods = (' '.join(pods.split(" "))).split(" ")
 pods = [pods[i] for i in range(5, len(pods) - 1, 5)]
 print("#### PODS: ")
-print(pods)
+for pod in pods:
+    print(pod)
 
 # log all pods
-print("#### LOGGING: ")
+print("#### LOGGING... ")
 use_filter = False
 GREP_FILTER="auth"
+subprocess.run(f"rm {LOG_FILE}", shell=True)
 def log_pod(pod: str):
     with open(LOG_FILE, "a") as f:
         cmd = f"kubectl logs -f {pod} --since=30m | sed -e 's/^/[{pod}] /'"
